@@ -9,4 +9,45 @@ class CommentForm extends Component {
 		this.handleTextChange = this.handleTextChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this)
 	}
+
+	handleAuthorChange(e) {
+		this.setState({ author: e.target.value });
+	}
+
+	handleTextChange(e) {
+		this.setState({ text: e.target.value });
+	}
+
+	handleSubmit(e) {
+		e.preventDefault();
+		console.log('${this.state.author} said "${this.state.text}" ')
+	}
+
+	render() {
+		return (
+			<form>
+				<input
+					type='text'
+					placeholder='Your name...'
+					style={ style.commentFormAuthor }
+					value={ this.state.author }
+					onChange={ this.handleAuthorChange } />
+
+				<input
+					type='text'
+					placeholder='Say something...'
+					style={ style.commentFormText }
+					value={ this.state.text }
+					onChange={ this.handleTextChange } />
+
+				<input
+					type='submit'
+					placeholder='Your name...'
+					style={ style.commentFormPost }
+					value='Post'/>
+			</form>
+		)
+	}
 }
+
+export default CommentForm;
